@@ -10,14 +10,12 @@ namespace ChatBot
     {
         static void Main(string[] args)
         {
-            var dict = new Dictionary<string, List<string>>
-            {
-                {"p", new List<string>{"a", "l"} },
-                {"a", new List<string>{"k", "n"} },
-                {"k", new List<string>{"j"} },
-                {"l", new List<string>{"m"} },
-                {"m", new List<string>{"r"} }
-            };
+            new Test();
+            //NewMethod();
+        }
+
+        private static void NewMethod()
+        {
             var graff = new Graff(new Dictionary<string, string> {
                 {"мобильные телефоны", "Mobile.txt" },
                 {"Телевидение", "Tv.txt" },
