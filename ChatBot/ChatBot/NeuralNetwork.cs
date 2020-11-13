@@ -2,6 +2,7 @@
 using System.Xml.Serialization;
 using System.Xml;
 using System.IO;
+using System;
 
 namespace ChatBot
 {
@@ -30,9 +31,9 @@ namespace ChatBot
 		 * @param input - входной вектор
 		 * @return массив из нулей и единиц, ответы нейронов
 		 */
-		int[] handleHard(int[,] input)
+		double[] handleHard(double[,] input)
 		{
-			int[] output = new int[neurons.Length];
+			double[] output = new double[neurons.Length];
 			for (int i = 0; i < output.Length; i++)
 				output[i] = neurons[i].transferHard(input);
 
@@ -44,9 +45,9 @@ namespace ChatBot
 		 * @param input -  входной вектор
 		 * @return массив из вероятностей, ответы нейронов
 		 */
-		int[] handle(int[,] input)
+		double[] handle(double[,] input)
 		{
-			int[] output = new int[neurons.Length];
+			double[] output = new double[neurons.Length];
 			for (int i = 0; i < output.Length; i++)
 				output[i] = neurons[i].transfer(input);
 
@@ -58,9 +59,9 @@ namespace ChatBot
 		 * @param input - входной вектор
 		 * @return индекс нейронов предназначенный для конкретного символа
 		 */
-		public int getAnswer(int[,] input)
+		public double getAnswer(double[,] input)
 		{
-			int[] output = handle(input);
+			double[] output = handle(input);
 			int maxIndex = 0;
 			for (int i = 1; i < output.Length; i++)
 				if (output[i] > output[maxIndex])
@@ -74,17 +75,17 @@ namespace ChatBot
 		 * @param input - входной вектор
 		 * @param correctAnswer - правильный ответ
 		 */
-		public void study(int[,] input, int correctAnswer)
+		public void study(double[,] input, int correctAnswer)
 		{
-			int[] correctOutput = new int[neurons.Length];
+			double[] correctOutput = new double[neurons.Length];
 			correctOutput[correctAnswer] = 1;
 
-			int[] output = handleHard(input);
+			double[] output = handleHard(input);
 			while (!compareArrays(correctOutput, output))
 			{
 				for (int i = 0; i < neurons.Length; i++)
 				{
-					int dif = correctOutput[i] - output[i];
+					double dif = correctOutput[i] - output[i];
 					neurons[i].changeWeights(input, dif);
 				}
 				output = handleHard(input);
@@ -95,13 +96,13 @@ namespace ChatBot
 		 * сравнение двух вектор
 		 * @param true - если массивы одинаковые, false - если нет
 		 */
-		bool compareArrays(int[] a, int[] b)
+		bool compareArrays(double[] a, double[] b)
 		{
 			if (a.Length != b.Length)
 				return false;
 
 			for (int i = 0; i < a.Length; i++)
-				if (a[i] != b[i])
+				if (Math.Abs(a[i] - b[i]) <= 0.00001)
 					return false;
 
 			return true;

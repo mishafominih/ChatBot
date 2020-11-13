@@ -13,10 +13,10 @@ namespace ChatBot
 		public string data;
 
 		[XmlIgnore]
-		public int[,] weight; // веса нейронов
+		public double[,] weight; // веса нейронов
 
 		[XmlIgnore]
-		public int minimum = 50; // порог
+		public double minimum = 50; // порог
 
 		[XmlIgnore]
 		public int row = 64, column = 64;
@@ -27,7 +27,7 @@ namespace ChatBot
 		public Neuron(int r, int col)
 		{
 			row = r; column = col;
-			weight = new int[row, column];
+			weight = new double[row, column];
 			randomizeWeights();
 		}
 
@@ -36,9 +36,9 @@ namespace ChatBot
 		 * @param input - входной вектор
 		 * @return ответ 0 или 1
 		 */
-		public int transferHard(int[,] input)
+		public double transferHard(double[,] input)
 		{
-			int power = 0;
+			double power = 0;
 			for (int r = 0; r < row; r++)
 			{
 				for (int c = 0; c < column; c++)
@@ -47,7 +47,7 @@ namespace ChatBot
 				}
 			}
 			//Debug.Log("Power: " + power);
-			return power >= minimum ? 1 : 0;
+			return power;
 		}
 
 		/**
@@ -55,9 +55,9 @@ namespace ChatBot
 		 * @param input - входной вектор
 		 * @return n вероятность
 		 */
-		public int transfer(int[,] input)
+		public double transfer(double[,] input)
 		{
-			int power = 0;
+			double power = 0;
 			for (int r = 0; r < row; r++)
 				for (int c = 0; c < column; c++)
 					power += weight[r, c] * input[r, c];
@@ -73,7 +73,7 @@ namespace ChatBot
 		{
 			for (int r = 0; r < row; r++)
 				for (int c = 0; c < column; c++)
-					weight[r, c] = new Random().Next(0, 10);
+					weight[r, c] = new Random().NextDouble();
 		}
 
 		/**
@@ -81,7 +81,7 @@ namespace ChatBot
 		 * @param input - входной вектор
 		 * @param d - разница между выходом нейрона и нужным выходом
 		 */
-		public void changeWeights(int[,] input, int d)
+		public void changeWeights(double[,] input, double d)
 		{
 			for (int r = 0; r < row; r++)
 				for (int c = 0; c < column; c++)
@@ -103,7 +103,7 @@ namespace ChatBot
 
 		public void onDeserialize()
 		{
-			weight = new int[row, column];
+			weight = new double[row, column];
 
 			string[] rows = data.Split(new char[] { '\n' });
 			for (int r = 0; r < row; r++)
@@ -111,7 +111,7 @@ namespace ChatBot
 				string[] columns = rows[r].Split(new char[] { ' ' });
 				for (int c = 0; c < column; c++)
 				{
-					weight[r, c] = int.Parse(columns[c]);
+					weight[r, c] = double.Parse(columns[c]);
 				}
 			}
 		}
