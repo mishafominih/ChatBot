@@ -13,8 +13,8 @@ namespace ChatBot
             var dict = new Dictionary<string, List<string>>
             {
                 {"p", new List<string>{"a", "l"} },
-                {"a", new List<string>{"k"} },
-                {"k", new List<string>{"n"} },
+                {"a", new List<string>{"k", "n"} },
+                {"k", new List<string>{"j"} },
                 {"l", new List<string>{"m"} },
                 {"m", new List<string>{"r"} }
             };

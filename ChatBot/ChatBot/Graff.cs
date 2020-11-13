@@ -19,82 +19,13 @@ namespace ChatBot
 
         public Graff(Dictionary<string, List<string>> info)
         {
-            starts = n(info);
+            starts = info
+                .Where(x => SelectOne(info, x.Key))
+                .ToDictionary(x => x.Key, x => x.Value)
+                .Select(x => (Element)new Start(GetElements(info, x.Key), x.Key))
+                .ToList();
             now = new Start(starts, null);
         }
-
-        private List<Element> n(Dictionary<string, List<string>> info)
-        {
-            var result = new List<Element>();
-            var node = info
-                .Where(x => SelectOne(info, x.Key))
-                .ToDictionary(x => x.Key, x => x.Value);
-
-            var endNode = CreateEndNode(info);
-
-            return result;
-        }
-
-        private List<Element> CreateEndNode(Dictionary<string, List<string>> info)
-        {
-            var keys = info.Keys.ToList();
-            var endNode = new List<Element>();
-            GetNode(keys, info, endNode);
-            return endNode;
-        }
-
-        private void GetNode(List<string> keys, Dictionary<string, List<string>> info, List<Element> endNode)
-        {
-            foreach (var key in keys)
-            {
-                foreach(var value in info.Values)
-                {
-                    if (value.Contains(key))
-                        GetNode(value, info, endNode);
-                    else if (!SelectOne(info, key))
-                        endNode.Add(new End(key));
-                }
-            }
-        }
-
-        /*
-        private List<Element> n(Dictionary<string, List<string>> info)
-        {
-            var res = new List<Element>();
-            var one = info
-                .Where(x => SelectOne(info, x.Key))
-                .ToDictionary(x => x.Key, x => x.Value);
-            var other = info
-                .Where(x => !SelectOne(info, x.Key));
-            if (other is null)
-            {
-                foreach (var e in one)
-                {
-                    res.Add(new End(e.Value.FirstOrDefault()));
-                }
-                return res;
-            }
-            other = other.ToDictionary(x => x.Key, x => x.Value);
-            foreach (var e in one)
-            {
-                //foreach (var v in e.Value)
-                //{
-                res.Add(new Medium(n(other.ToDictionary(x => x.Key, x => x.Value)), e.Key));
-                //}
-            }
-            return res;
-        } 
-        */
-        private static bool SelectOne(Dictionary<string, List<string>> info, string x)
-        {
-            foreach (var Ls in info.Values)
-            {
-                if (Ls.Contains(x))
-                    return false;
-            }
-            return true;
-        }
-
         public void NextStep(string choise)
         {
             if (now is End) 
@@ -107,6 +38,25 @@ namespace ChatBot
             if (now is End)
                 return null;
             return now.GetNext().Select(x => x.GetValue()).ToList();
+        }
+
+        private List<Element> GetElements(Dictionary<string, List<string>> info, string key)
+        {
+            var res = new List<Element>();
+            foreach (var e in info[key])
+                if (info.ContainsKey(e))
+                    res.Add(new Medium(GetElements(info, e), e));
+                else
+                    res.Add(new End(e));
+            return res;
+        }
+
+        private static bool SelectOne(Dictionary<string, List<string>> info, string x)
+        {
+            foreach (var Ls in info.Values)
+                if (Ls.Contains(x))
+                    return false;
+            return true;
         }
     }
 }
