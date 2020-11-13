@@ -27,3 +27,10 @@ C:\Users\user\source\repos\BotVK\ChatBot\ChatBot\ChatBot\bin\Debug\System.Numeri
 C:\Users\user\source\repos\BotVK\ChatBot\ChatBot\ChatBot\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\user\source\repos\BotVK\ChatBot\ChatBot\ChatBot\bin\Debug\TensorFlow.NET.xml
 C:\Users\user\source\repos\BotVK\ChatBot\ChatBot\ChatBot\obj\Debug\ChatBot.csproj.CopyComplete
+E:\Институт\Хакатон\ChatBot\ChatBot\ChatBot\obj\Debug\ChatBot.csprojAssemblyReference.cache
+E:\Институт\Хакатон\ChatBot\ChatBot\ChatBot\obj\Debug\ChatBot.First.resources
+E:\Институт\Хакатон\ChatBot\ChatBot\ChatBot\obj\Debug\ChatBot.Properties.Resources.resources
+E:\Институт\Хакатон\ChatBot\ChatBot\ChatBot\obj\Debug\ChatBot.Сategories.resources
+E:\Институт\Хакатон\ChatBot\ChatBot\ChatBot\obj\Debug\ChatBot.csproj.GenerateResource.cache
+E:\Институт\Хакатон\ChatBot\ChatBot\ChatBot\obj\Debug\ChatBot.exe
+E:\Институт\Хакатон\ChatBot\ChatBot\ChatBot\obj\Debug\ChatBot.pdb

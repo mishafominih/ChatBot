@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace ChatBot
 {
@@ -23,6 +24,8 @@ namespace ChatBot
                 {"Домашний телефон", "Home.txt" },
                 {"Видеонаблюдение", "Video.txt" }
             });
+            var x = new Сategories(graff);
+            Application.Run(x);
             while (graff.GetVarians() != null)
             {
                 foreach (var e in graff.GetVarians())
