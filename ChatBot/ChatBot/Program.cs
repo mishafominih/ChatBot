@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace ChatBot
 {
@@ -11,26 +10,23 @@ namespace ChatBot
     {
         static void Main(string[] args)
         {
-            var x = new Сategories(new List<string> { "ghbdtn", "gjrf", "jakfsfsa", " dahaffa", "fasfga", " afafg", " afag", " affag","afgaga" , "fasfag", " ", "fjakhajgh", " ahfkhakf"});
-            Application.Run(x);
-
-            //var dict = new Dictionary<string, List<string>>
-            //{
-            //    {"p", new List<string>{"a", "l"} },
-            //    {"a", new List<string>{"k"} },
-            //    {"k", new List<string>{"n"} },
-            //    {"l", new List<string>{"m"} },
-            //    {"m", new List<string>{"r"} }
-            //};
-            //var graff = new Graff(dict);
-            //while (graff.GetVarians() != null)
-            //{
-            //    foreach (var e in graff.GetVarians())
-            //    {
-            //        Console.WriteLine(e);
-            //    }
-            //    graff.NextStep(Console.ReadLine());
-            //}
+            var dict = new Dictionary<string, List<string>>
+            {
+                {"p", new List<string>{"a", "l"} },
+                {"a", new List<string>{"k"} },
+                {"k", new List<string>{"n"} },
+                {"l", new List<string>{"m"} },
+                {"m", new List<string>{"r"} }
+            };
+            var graff = new Graff(dict);
+            while (graff.GetVarians() != null)
+            {
+                foreach (var e in graff.GetVarians())
+                {
+                    Console.WriteLine(e);
+                }
+                graff.NextStep(Console.ReadLine());
+            }
         }
     }
 }
