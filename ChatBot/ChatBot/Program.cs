@@ -18,7 +18,13 @@ namespace ChatBot
                 {"l", new List<string>{"m"} },
                 {"m", new List<string>{"r"} }
             };
-            var graff = new Graff(dict);
+            var graff = new Graff(new Dictionary<string, string> {
+                {"мобильные телефоны", "Mobile.txt" },
+                {"Телевидение", "Tv.txt" },
+                {"Интернет", "Internet.txt" },
+                {"Домашний телефон", "Home.txt" },
+                {"Видеонаблюдение", "Video.txt" }
+            });
             while (graff.GetVarians() != null)
             {
                 foreach (var e in graff.GetVarians())
