@@ -1,0 +1,10 @@
+C:\Users\user\source\repos\BotVK\ChatBot\ChatBot\ChatBot\bin\Debug\ChatBot.exe.config
+C:\Users\user\source\repos\BotVK\ChatBot\ChatBot\ChatBot\bin\Debug\ChatBot.exe
+C:\Users\user\source\repos\BotVK\ChatBot\ChatBot\ChatBot\bin\Debug\ChatBot.pdb
+C:\Users\user\source\repos\BotVK\ChatBot\ChatBot\ChatBot\obj\Debug\ChatBot.csprojAssemblyReference.cache
+C:\Users\user\source\repos\BotVK\ChatBot\ChatBot\ChatBot\obj\Debug\ChatBot.csproj.CoreCompileInputs.cache
+C:\Users\user\source\repos\BotVK\ChatBot\ChatBot\ChatBot\obj\Debug\ChatBot.exe
+C:\Users\user\source\repos\BotVK\ChatBot\ChatBot\ChatBot\obj\Debug\ChatBot.pdb
+C:\Users\user\source\repos\BotVK\ChatBot\ChatBot\ChatBot\obj\Debug\ChatBot.First.resources
+C:\Users\user\source\repos\BotVK\ChatBot\ChatBot\ChatBot\obj\Debug\ChatBot.Properties.Resources.resources
+C:\Users\user\source\repos\BotVK\ChatBot\ChatBot\ChatBot\obj\Debug\ChatBot.csproj.GenerateResource.cache
