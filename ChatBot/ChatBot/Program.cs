@@ -11,7 +11,9 @@ namespace ChatBot
     {
         static void Main(string[] args)
         {
-            new Test();
+            WorkServer.GetDict();
+            var info = WorkServer.GetData("интернет", "сплетение");
+            //new Test();
             //NewMethod();
             //Console.Read();
         }

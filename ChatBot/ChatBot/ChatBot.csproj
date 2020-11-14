@@ -86,6 +86,7 @@
     </Compile>
     <Compile Include="Start.cs" />
     <Compile Include="Test.cs" />
+    <Compile Include="WorkServer.cs" />
     <Compile Include="Сategories.cs">
       <SubType>Form</SubType>
     </Compile>
