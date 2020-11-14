@@ -73,6 +73,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Graff.cs" />
+    <Compile Include="Layer.cs" />
     <Compile Include="Medium.cs" />
     <Compile Include="NeuralNetwork.cs" />
     <Compile Include="Neuron.cs" />
