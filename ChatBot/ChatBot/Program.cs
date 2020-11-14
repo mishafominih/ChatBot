@@ -11,10 +11,10 @@ namespace ChatBot
     {
         static void Main(string[] args)
         {
-            //WorkServer.GetDict();
+            WorkServer.GetDict();
             //var info = WorkServer.GetData("интернет", "сплетение");
-            new Test();
-            //NewMethod();
+            //new Test();
+            NewMethod();
             //Console.Read();
         }
 

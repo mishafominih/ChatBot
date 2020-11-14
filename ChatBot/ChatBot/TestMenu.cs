@@ -15,6 +15,7 @@ namespace ChatBot
         private int countButtonEnter = 8;
         private List<Button> buttons = new List<Button>();
         private Graff graff;
+        
 
         public TestMenu(List<string> listQuery, Graff g)
         {
@@ -89,22 +90,31 @@ namespace ChatBot
             var txt = ((TextBox)sender).Text;
             var a = ProcessingString.ParseString(txt);
             var all = graff.GetEnd();
+            //var all = new HashSet<string>();
+            //for(int i = 0; i < 150; i++)
+            //{
+            //    all.Add("п");
+            //}
 
             var network = new NeuralNetwork(3, new int[] { 2, 3, 1 });
             network.Load("load.txt");
 
             var max = 0.0;
             var answer = "";//ответ, его надо вывести на экран
-            foreach (var str in all)
+            for(int i = 0; i < all.Count; i++)
+                Work(a, network, ref max, ref answer, all[i]);
+            ///label1.Text = answer;
+        }
+
+        private static void Work(List<string> a, NeuralNetwork network, ref double max, ref string answer, string str)
+        {
+            var b = ProcessingString.ParseString(str);
+            var matrix = ProcessingString.StringEquals(a, b);
+            var weight = network.Run(matrix);
+            if (weight.First() > max)
             {
-                var b = ProcessingString.ParseString(str);
-                var matrix = ProcessingString.StringEquals(a, b);
-                var weight = network.Run(matrix);
-                if(weight.First() > max)
-                {
-                    max = weight.First();
-                    answer = str;
-                }
+                max = weight.First();
+                answer = str;
             }
         }
     }

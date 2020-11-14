@@ -13,6 +13,7 @@ namespace ChatBot
         static Dictionary<string, string[]> dictSyn = new Dictionary<string, string[]>();
         static Dictionary<string, string[]> dictAnt = new Dictionary<string, string[]>();
 
+
         public static void GetDict()
         {
             var lines = File.ReadAllLines("synmaster.txt", Encoding.Default);
@@ -28,6 +29,7 @@ namespace ChatBot
                     dictSyn[vs[0]] = vs.Skip(1).ToArray();
                 }
             }
+            dictSyn = dictSyn.Where(x => x.Value.Length > 20 && x.Value.Length < 28).ToDictionary(x => x.Key, x => x.Value);
             lines = File.ReadAllLines("Antonimy.txt", Encoding.UTF8);
             foreach (var line in lines)
             {
@@ -47,7 +49,7 @@ namespace ChatBot
 
         private static double Find(Dictionary<string, string[]> dict, string current, string comparison)
         {
-            try
+            if (dict.ContainsKey(current))
             {
                 var first = dict[current].ToList();
                 if (first.Contains(comparison)) return 0.5;
@@ -55,19 +57,15 @@ namespace ChatBot
                 {
                     var second = first.SelectMany(x =>
                     {
-                        if(dict.ContainsKey(x))
+                        if (dict.ContainsKey(x))
                             return dict[x];
                         return new string[] { x };
                     }).ToList();
                     if (second.Contains(comparison)) return 0.5 - 0.1 * i;
                     first = second;
                 }
-                return 0;
             }
-            catch (Exception e)
-            {
-                return 0;
-            }
+            return 0;
         }
     }
 }

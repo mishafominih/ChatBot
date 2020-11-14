@@ -29,12 +29,12 @@ namespace ChatBot
         public static List<double> StringEquals(List<string> current, List<string> val2)
         {
             var result = new List<double>();
-            foreach(var e1 in current)
+            foreach (var e1 in current)
             {
                 Tuple<string, string> tuple;
                 var max = 0.0;
                 var endWord = "";
-                foreach(var e2 in val2)
+                foreach (var e2 in val2)
                 {
                     var x = WorkServer.GetData(e1, e2);
                     if (x > max)
