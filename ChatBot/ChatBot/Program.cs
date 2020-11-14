@@ -13,6 +13,7 @@ namespace ChatBot
         {
             new Test();
             //NewMethod();
+            //Console.Read();
         }
 
         private static void NewMethod()
