@@ -14,7 +14,7 @@ namespace ChatBot
             //WorkServer.GetDict();
             //var info = WorkServer.GetData("интернет", "сплетение");
             new Test();
-            //NewMethod();
+            NewMethod();
             //Console.Read();
         }
 
@@ -27,9 +27,8 @@ namespace ChatBot
                 {"Домашний телефон", "Home.txt" },
                 {"Видеонаблюдение", "Video.txt" }
             });
-
-            var x = new Сategories(graff);
-            Application.Run(x);
+            var first = new First(graff, new List<string>() { "  adaf", " afagg", " agga", " aag" });
+            Application.Run(first);
         }
     }
 }
