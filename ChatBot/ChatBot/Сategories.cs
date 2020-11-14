@@ -73,7 +73,7 @@ namespace ChatBot
             CountClick++;
         }
 
-        private void CreateDynamicButton(List<string> MyList)
+        public void CreateDynamicButton(List<string> MyList)
         {
             if (MyList is null || MyList.Count == 0) return;
             int dx, dy;
