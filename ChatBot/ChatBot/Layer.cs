@@ -10,7 +10,7 @@ namespace ChatBot
     {
         public List<Neuron> neurons = new List<Neuron>();
         Layer previous;
-        Layer next;
+        public Layer next;
         public Layer(int count, Layer prev)
         {
             previous = prev;
@@ -23,7 +23,7 @@ namespace ChatBot
             }
         }
 
-        private Layer(List<Neuron> ns, Layer prev)
+        public Layer(List<Neuron> ns, Layer prev)
         {
             previous = prev;
             neurons = ns;

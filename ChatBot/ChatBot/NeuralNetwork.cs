@@ -5,6 +5,7 @@ using System.IO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace ChatBot
 {
@@ -71,6 +72,56 @@ namespace ChatBot
             }
 
             Learn(d, start, end);
+        }
+
+        public void Save(string path)
+        {
+            var result = new List<string>();
+            result.Add(count.ToString());
+            var layer = start;
+            while(layer != null)
+            {
+                var str = new StringBuilder();
+                str.Append(layer.neurons.Count.ToString() + ':');
+                foreach(var n in layer.neurons)
+                {
+                    for(int i = 0; i < n.weights.Count; i++)
+                    {
+                        str.Append(n.weights[i].ToString() + ' ');
+                    }
+                    str = str.Remove(str.Length - 1, 1);
+                    str.Append('|');
+                }
+                str = str.Remove(str.Length - 1, 1);
+                result.Add(str.ToString());
+
+                layer = layer.next;
+            }
+            File.WriteAllLines(path, result);
+        }
+
+        public void Load(string path)
+        {
+            var lines = File.ReadAllLines(path);
+            count = int.Parse(lines[0]);
+            var prev = new Layer(0, null);
+            var res = prev;
+            for (int i = 1; i < lines.Length; i++)
+            {
+                var c = int.Parse(lines[i].Split(':')[0]);
+                var str = lines[i].Split(':')[1];
+                var weight = str
+                    .Split('|')
+                    .Select(x => x.Split(' ')
+                    .Select(y => double.Parse(y)).ToList()).ToList();
+                var neurons = new List<Neuron>();
+                for(int j = 0; j < c; j++)
+                    neurons.Add(new Neuron(weight[j]));
+                var layer = new Layer(neurons, prev);
+                prev.SetNext(layer);
+                prev = layer;
+            }
+            start = res.next;
         }
 
         private void Learn(double d, List<double> start, List<double> end)

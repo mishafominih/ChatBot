@@ -19,7 +19,7 @@ namespace ChatBot
             }
         }
 
-        private Neuron(List<double> w)
+        public Neuron(List<double> w)
         {
             weights = w;
         }
