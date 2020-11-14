@@ -15,6 +15,7 @@ namespace ChatBot
         private List<Button> buttons = new List<Button>(); 
         private int CountClick = 1;
         private List<string> list;
+        private int countButtonEnter = 10; 
 
         public Сategories(Graff graff)
         {
@@ -34,7 +35,7 @@ namespace ChatBot
         private void CreateButton()
         {
             CreateDynamicButton(list);
-            if (list.Count > 10)
+            if (list.Count > countButtonEnter)
             {
                 var button = new Button();
                 button.Location = new Point(70, 340);
@@ -51,19 +52,19 @@ namespace ChatBot
             but.Location = new Point(0, 0);
             but.Size = new Size(100, 100);
             Controls.Add(but);
-            if (CountClick * 10 > list.Count)
+            if (CountClick * countButtonEnter > list.Count)
                 CountClick = 0;
             DeleteButton();
-            CreateDynamicButton(list.Skip(CountClick * 10).ToList());
+            CreateDynamicButton(list.Skip(CountClick * countButtonEnter).ToList());
             CountClick++;
         }
 
         private void CreateDynamicButton(List<string> MyList)
         {
             int dx, dy;
-            var step = MyList.Count > 10 ? 10 : MyList.Count;
+            var step = MyList.Count > countButtonEnter ? countButtonEnter : MyList.Count;
             var countX = Math.Min(CountX(step), 5);
-            var countY = Math.Min(MyList.Count, 10) / countX;
+            var countY = Math.Min(MyList.Count, countButtonEnter) / countX;
             var size = new Size(900 / (countX + 1), 255 / (countY + 1));
             dx = size.Width / countX;
             dy = size.Height / countY;
