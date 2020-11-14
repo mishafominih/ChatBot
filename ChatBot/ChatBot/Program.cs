@@ -11,8 +11,8 @@ namespace ChatBot
     {
         static void Main(string[] args)
         {
-            new Test();
-            //NewMethod();
+            //new Test();
+            NewMethod();
             //Console.Read();
         }
 
@@ -25,14 +25,6 @@ namespace ChatBot
                 {"Домашний телефон", "Home.txt" },
                 {"Видеонаблюдение", "Video.txt" }
             });
-            while (graff.GetVarians() != null)
-            {
-                foreach (var e in graff.GetVarians())
-                {
-                    Console.WriteLine(e);
-                }
-                graff.NextStep(Console.ReadLine());
-            }
 
             var x = new Сategories(graff);
             Application.Run(x);
