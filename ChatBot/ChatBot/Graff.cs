@@ -9,6 +9,7 @@ namespace ChatBot
 {
     public class Graff
     {
+        public static Dictionary<string, List<string>> info;
         private Element now;
         private Stack<Element> history = new Stack<Element>(); 
         private List<Element> starts;
@@ -25,6 +26,7 @@ namespace ChatBot
                     dict.Add(kv.Key, kv.Value);
                 }
             }
+            Graff.info = dict;
             Initialize(dict);
         }
 
@@ -36,6 +38,7 @@ namespace ChatBot
 
         public Graff(Dictionary<string, List<string>> info)
         {
+            Graff.info = info;
             Initialize(info);
         }
 

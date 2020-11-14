@@ -15,7 +15,7 @@ namespace ChatBot
         private int countButtonEnter = 8;
         private List<Button> buttons = new List<Button>();
         private Graff graff;
-        
+        private Label label;
 
         public TestMenu(List<string> listQuery, Graff g)
         {
@@ -103,6 +103,18 @@ namespace ChatBot
             var answer = "";//ответ, его надо вывести на экран
             for(int i = 0; i < all.Count; i++)
                 Work(a, network, ref max, ref answer, all[i]);
+            //graff.NextStep(answer);
+            if(label == null)
+            {
+                label = new Label();
+                label.Text = Graff.info[answer].First();
+                label.Bounds = new Rectangle(50, 300, 1000, 100);
+                Controls.Add(label);
+            }
+            else
+            {
+                label.Text = Graff.info[answer].First();
+            }
             ///label1.Text = answer;
         }
 
