@@ -11,7 +11,10 @@ namespace ChatBot
     {
         static void Main(string[] args)
         {
+            var x = new TestMenu(new List<string>() { "faaf", "afgg", " afag", " afag0", " aggaga0", " agaad", " agagds", " agdas" });
+            Application.Run(x);
             new Test();
+            
             //NewMethod();
             //Console.Read();
         }

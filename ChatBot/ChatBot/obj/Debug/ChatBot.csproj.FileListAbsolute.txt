@@ -52,3 +52,4 @@ E:\Институт\ChatBot\ChatBot\ChatBot\bin\Debug\System.Runtime.CompilerSer
 E:\Институт\ChatBot\ChatBot\ChatBot\obj\Debug\ChatBot.csproj.CopyComplete
 E:\Институт\ChatBot\ChatBot\ChatBot\obj\Debug\ChatBot.exe
 E:\Институт\ChatBot\ChatBot\ChatBot\obj\Debug\ChatBot.pdb
+E:\Институт\ChatBot\ChatBot\ChatBot\obj\Debug\ChatBot.TestMenu.resources
