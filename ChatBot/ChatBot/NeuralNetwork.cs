@@ -70,8 +70,6 @@ namespace ChatBot
                     return;
                 }
             }
-
-            Learn(d, start, end);
         }
 
         public void Save(string path)

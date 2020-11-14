@@ -13,8 +13,8 @@ namespace ChatBot
         {
             //WorkServer.GetDict();
             //var info = WorkServer.GetData("интернет", "сплетение");
-            //new Test();
-            NewMethod();
+            new Test();
+            //NewMethod();
             //Console.Read();
         }
 
