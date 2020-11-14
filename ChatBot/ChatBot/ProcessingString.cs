@@ -28,7 +28,6 @@ namespace ChatBot
 
         public static List<double> StringEquals(List<string> current, List<string> val2)
         {
-
             var result = new List<double>();
             foreach(var e1 in current)
             {
