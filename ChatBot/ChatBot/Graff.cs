@@ -10,6 +10,7 @@ namespace ChatBot
     public class Graff
     {
         private Element now;
+        private Stack<Element> history = new Stack<Element>(); 
         private List<Element> starts;
 
         public Graff(Dictionary<string, string> type_path)
@@ -46,10 +47,24 @@ namespace ChatBot
                             .Select(x => (Element)new Start(GetElements(info, x.Key), x.Key))
                             .ToList();
             now = new Start(starts, null);
+            
+        }
+
+        public Element GetNow()
+        {
+            return now;
+        }
+
+        public void BackStep()
+        {
+            if (history.Count == 0)
+                return;
+            now = history.Pop();
         }
 
         public void NextStep(string choise)
         {
+            history.Push(now);
             if (now is End) 
                 return;
             now = now.Find(choise);
@@ -123,6 +138,5 @@ namespace ChatBot
             }
             return res;
         }
-
     }
 }

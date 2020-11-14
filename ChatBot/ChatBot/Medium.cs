@@ -10,6 +10,7 @@ namespace ChatBot
     {
         private string value;
         private List<Element> next;
+
         public Medium(List<Element> elements, string val)
         {
             next = elements;
@@ -40,5 +41,6 @@ namespace ChatBot
         {
             throw new NotImplementedException();
         }
+
     }
 }

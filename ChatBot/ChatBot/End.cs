@@ -9,6 +9,7 @@ namespace ChatBot
     public class End : Element
     {
         private string value;
+
         public End(string val)
         {
             value = val;
