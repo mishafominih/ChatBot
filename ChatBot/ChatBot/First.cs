@@ -14,9 +14,13 @@ namespace ChatBot
         private PictureBox pictureBox2;
         private PictureBox pictureBox3;
         private Button button1;
+        private List<string> listQuery;
+        private Graff g;
 
-        public First()
+        public First(List<string> listQuery, Graff g)
         {
+            this.listQuery = listQuery;
+            this.g = g;
             InitializeComponent();
         }
 
@@ -43,6 +47,7 @@ namespace ChatBot
             this.button2.TabIndex = 1;
             this.button2.Text = "Выбор категорий";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -54,6 +59,7 @@ namespace ChatBot
             this.button1.TabIndex = 2;
             this.button1.Text = "Ввести запрос";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // pictureBox1
             // 
@@ -102,9 +108,26 @@ namespace ChatBot
 
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
+            var f = new Сategories(g);
+            f.FormClosed += (ee, aa) =>
+            {
+                this.Show();
+            };
+            f.Show();
+            Hide();
+        }
 
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            var f = new TestMenu(listQuery, g);
+            f.FormClosed += (ee, aa) =>
+            {
+                this.Show();
+            };
+            f.Show();
+            Hide();
         }
     }
 }

@@ -28,7 +28,7 @@ namespace ChatBot
                 {"Видеонаблюдение", "Video.txt" }
             });
 
-            var x = new TestMenu(graff.GetEnd(), graff);
+            var x = new First(graff.GetEnd(), graff);
             Application.Run(x);
         }
     }
