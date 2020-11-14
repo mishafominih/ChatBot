@@ -11,8 +11,8 @@ namespace ChatBot
     {
         static void Main(string[] args)
         {
-            //new Test();
-            NewMethod();
+            new Test();
+            //NewMethod();
             //Console.Read();
         }
 

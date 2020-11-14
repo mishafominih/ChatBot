@@ -38,11 +38,44 @@ namespace ChatBot
             return this.start.ActivateNeurons(start);
         }
 
-        public void Study(List<double> start, List<double> end, double d)
+        public void Study(double d)
         {
-            var info = new List<double>();
+            var input = new List<List<double>>();
+            var output = new List<List<double>>();
+            GetData(ref input, ref output);
 
-            var layers = Enumerable.Range(0, 10).Select(x => newLayer()).ToList();
+            var start = new List<double>();
+            var end = new List<double>();
+            while (true)
+            {
+                var flag = false;
+                for(int i = 0; i < input.Count; i++)
+                {
+                    start = input[i];
+                    end = output[i];
+                    var res = Run(start);
+                    if(Compare(res, end) > d)
+                    {
+                        flag = true;
+                        break;
+                    }
+                }
+                if (flag)
+                {
+                    Learn(d, start, end);
+                }
+                else
+                {
+                    return;
+                }
+            }
+
+            Learn(d, start, end);
+        }
+
+        private void Learn(double d, List<double> start, List<double> end)
+        {
+            var layers = Enumerable.Range(0, 5).Select(y => GetNewBranch()).ToList();
             double v = Compare(layers.First().ActivateNeurons(start), end);
             while (v >= d)
             {
@@ -60,14 +93,23 @@ namespace ChatBot
                     .Take(10)
                     .ToList();
                 v = Compare(layers.First().ActivateNeurons(start), end);
-
-                info.Clear();
-                foreach(var e in layers)
-                {
-                    info.Add(Compare(e.ActivateNeurons(start), end));
-                }
             }
             this.start = layers.First();
+        }
+
+        private void GetData(ref List<List<double>> start, ref List<List<double>> end)
+        {
+            var strs = File.ReadAllLines("learn.txt");
+            start = strs
+                .Select(x => x.Split(':')[0])
+                .Select(x => x.Split(' '))
+                .Select(x => x.Select(y => double.Parse(y)).ToList())
+                .ToList();
+            end = strs
+                .Select(x => x.Split(':')[1])
+                .Select(x => x.Split(' '))
+                .Select(x => x.Select(y => double.Parse(y)).ToList())
+                .ToList();
         }
 
         private double Compare(List<double> first, List<double> second)

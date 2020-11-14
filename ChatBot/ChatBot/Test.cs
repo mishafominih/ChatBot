@@ -10,14 +10,14 @@ namespace ChatBot
     {
         public Test()
         {
-            var network = new NeuralNetwork(3, new int[] { 2, 10, 1 });
+            var network = new NeuralNetwork(4, new int[] { 2, 3, 3, 1 });
 
             List<double> start = new List<double> { 1, 1 };
             List<double> end = new List<double> { 1 };
 
-            network.Study(start, end, 0.1);
-            Console.WriteLine(Compare(network.Run(
-                start), end));
+            network.Study(0.17);
+            Console.WriteLine(network.Run(
+                start).First());
         }
         private double Compare(List<double> first, List<double> second)
         {
