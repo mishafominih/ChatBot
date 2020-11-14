@@ -1,5 +1,2 @@
 *.cache
-*.config
-*.exe
 *.resources
-*.pdb
