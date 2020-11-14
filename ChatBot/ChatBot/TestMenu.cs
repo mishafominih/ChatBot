@@ -16,12 +16,25 @@ namespace ChatBot
         private List<Button> buttons = new List<Button>();
         private Graff graff;
         private Label label;
-
+        private List<string> hiWords;
+        private List<PictureBox> Mem = new List<PictureBox>();
         public TestMenu(List<string> listQuery, Graff g)
         {
+            hiWords = new List<string>() { "привет", "здравствуйте" };
             graff = g;
             CreateDynamicButton(listQuery);
             InitializeComponent();
+        }
+
+        private void CreateMEM()
+        {
+            var picter = new PictureBox();
+            picter.Location = new Point(700, 30);
+            picter.Size = new Size(230, 230);
+            picter.BackgroundImage = Image.FromFile(@"Image\mem.jpg");
+            picter.BackgroundImageLayout = ImageLayout.Zoom;
+            Controls.Add(picter);
+            Mem.Add(picter);
         }
 
         private Button newButton(Point point, Size size, string text, Action<object> action)
@@ -88,6 +101,10 @@ namespace ChatBot
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             var txt = ((TextBox)sender).Text;
+            if (hiWords.Contains(txt))
+                CreateMEM();
+            else
+                Mem.ForEach(x => x.Dispose());
             var a = ProcessingString.ParseString(txt);
             var all = graff.GetEnd();
             //var all = new HashSet<string>();
