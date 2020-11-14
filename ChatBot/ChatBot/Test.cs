@@ -17,7 +17,7 @@ namespace ChatBot
             //List<double> start = new List<double> { 1, 1 };
             //List<double> end = new List<double> { 1 };
 
-            network.Study(0.25);
+            network.Study(0.35);
             //Console.WriteLine(network.Run(
                 //start).First());
             network.Save("load.txt");
