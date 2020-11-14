@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -145,6 +146,11 @@ namespace ChatBot
                 max = weight.First();
                 answer = str;
             }
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            Process.Start("chrome.exe", "https://moscow.rt.ru/lightplus?utm_source=google&utm_medium=cpc&utm_campaign=11143260664&utm_content=108921880453_%D1%80%D0%BE%D1%81%D1%82%D0%B5%D0%BB%D0%B5%D0%BA%D0%BE%D0%BC&utm_term=%D1%80%D0%BE%D1%81%D1%82%D0%B5%D0%BB%D0%B5%D0%BA%D0%BE%D0%BC&gclid=Cj0KCQiAnb79BRDgARIsAOVbhRr96Q_pOU5A6oOPgP88uDjbt6RCw5xjIzRDmhp1XrsQ0_XpEuIW2YkaAsm7EALw_wcB");
         }
     }
 }
