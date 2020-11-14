@@ -13,8 +13,8 @@ namespace ChatBot
         {
             //WorkServer.GetDict();
             //var info = WorkServer.GetData("интернет", "сплетение");
-            new Test();
-            //NewMethod();
+            //new Test();
+            NewMethod();
             //Console.Read();
         }
 
@@ -28,7 +28,7 @@ namespace ChatBot
                 {"Видеонаблюдение", "Video.txt" }
             });
 
-            var x = new Сategories(graff);
+            var x = new TestMenu(graff.GetEnd(), graff);
             Application.Run(x);
         }
     }

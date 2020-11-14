@@ -8,6 +8,7 @@ namespace ChatBot
 {
     public class ProcessingString
     {
+        const int count = 20;
         public static List<string> ParseString(string line)
         {
             var result = new List<string>();
@@ -47,7 +48,15 @@ namespace ChatBot
                 val2.Remove(endWord);
                 result.Add(max);
             }
-            return result;
+            result = result.OrderBy(x => x).ToList();
+            if (result.Count < 20)
+            {
+                for (int i = 0; i < count; i++)
+                {
+                    result.Add(0.5);
+                }
+            }
+            return result.Take(count).ToList();
         }
     }
 }

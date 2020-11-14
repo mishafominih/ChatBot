@@ -14,9 +14,11 @@ namespace ChatBot
     {
         private int countButtonEnter = 8;
         private List<Button> buttons = new List<Button>();
+        private Graff graff;
 
-        public TestMenu(List<string> listQuery)
+        public TestMenu(List<string> listQuery, Graff g)
         {
+            graff = g;
             CreateDynamicButton(listQuery);
             InitializeComponent();
         }
@@ -84,7 +86,26 @@ namespace ChatBot
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
+            var txt = ((TextBox)sender).Text;
+            var a = ProcessingString.ParseString(txt);
+            var all = graff.GetEnd();
 
+            var network = new NeuralNetwork(3, new int[] { 2, 3, 1 });
+            network.Load("load.txt");
+
+            var max = 0.0;
+            var answer = "";//ответ, его надо вывести на экран
+            foreach (var str in all)
+            {
+                var b = ProcessingString.ParseString(str);
+                var matrix = ProcessingString.StringEquals(a, b);
+                var weight = network.Run(matrix);
+                if(weight.First() > max)
+                {
+                    max = weight.First();
+                    answer = str;
+                }
+            }
         }
     }
 }

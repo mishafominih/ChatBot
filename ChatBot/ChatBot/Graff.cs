@@ -79,20 +79,20 @@ namespace ChatBot
 
         public List<String> GetEnd()
         {
-            var ends = new List<End>();
+            var ends = new List<Medium>();
             foreach (var v in starts)
             {
-                if (v is End) ends.Add((End)v);
+                if (v is Medium) ends.Add((Medium)v);
                 else AddEnd(ends, v);
             }
             return ends.Select(x => x.GetValue()).ToList();
         }
 
-        private void AddEnd(List<End> ends, Element nowElem)
+        private void AddEnd(List<Medium> ends, Element nowElem)
         {
             foreach(var v in nowElem.GetNext())
             {
-                if (v is End) ends.Add((End)v);
+                if (v is Medium) ends.Add((Medium)v);
                 else AddEnd(ends, v);
             }
         }

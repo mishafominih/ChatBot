@@ -15,7 +15,7 @@ namespace ChatBot
 
         public First()
         {
-
+            InitializeComponent();
         }
 
         private void InitializeComponent()

@@ -53,3 +53,4 @@ E:\Институт\ChatBot\ChatBot\ChatBot\obj\Debug\ChatBot.csproj.CopyComplet
 E:\Институт\ChatBot\ChatBot\ChatBot\obj\Debug\ChatBot.exe
 E:\Институт\ChatBot\ChatBot\ChatBot\obj\Debug\ChatBot.pdb
 E:\Институт\ChatBot\ChatBot\ChatBot\obj\Debug\ChatBot.TestMenu.resources
+C:\Users\user\source\repos\BotVK\ChatBot\ChatBot\ChatBot\obj\Debug\ChatBot.TestMenu.resources
